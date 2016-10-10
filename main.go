@@ -37,6 +37,27 @@ func main() {
 	retVal = ret.getValue()
 	fmt.Printf("client return: %v\n", retVal)
 
+	fmt.Println("how about pipeline?")
+
+	hello = &method{"hello", nil}
+	buf = hello.serialize()
+	writeCompletely(conn, buf)
+
+	args = make([]*arg, 2)
+	args[0] = &arg{1, intToBytes(33)}
+	args[1] = &arg{1, intToBytes(55)}
+	add = &method{"add", args}
+	buf = add.serialize()
+	writeCompletely(conn, buf)
+
+	ret, _ = readArg(conn)
+	retVal = ret.getValue()
+	fmt.Printf("client return: %v\n", retVal)
+
+	ret, _ = readArg(conn)
+	retVal = ret.getValue()
+	fmt.Printf("client return: %v\n", retVal)
+
 }
 
 func intToBytes(n int) []byte {

@@ -60,7 +60,7 @@ func sendLoop(writer *bufio.Writer, retChan chan *arg) {
 		writeLen := 0
 
 		for writeLen < len(buf) {
-			len, err := writer.Write(buf)
+			len, err := writer.Write(buf[writeLen:])
 			if err != nil {
 				panic("wat write failed")
 			}
