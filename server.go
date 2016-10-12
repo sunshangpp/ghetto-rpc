@@ -105,7 +105,7 @@ func readNBytes(reader io.Reader, n int) ([]byte, error) {
 	buf := make([]byte, n)
 	readLen := 0
 	for readLen < n {
-		len, err := reader.Read(buf)
+		len, err := reader.Read(buf[readLen:])
 		if err != nil {
 			return nil, err
 		}

@@ -58,6 +58,9 @@ func main() {
 	retVal = ret.getValue()
 	fmt.Printf("client return: %v\n", retVal)
 
+	conn.Close()
+
+	time.Sleep(1000 * time.Millisecond)
 }
 
 func intToBytes(n int) []byte {
