@@ -1,3 +1,3 @@
 # ghetto-rpc
 
-This is shitty
+toy rpc implementation with custom binary protocal
